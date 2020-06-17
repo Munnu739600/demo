@@ -5,20 +5,21 @@
 	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
-	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="59d25cbf-47e7-4e44-ba09-b948db54b541" >
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="b8e7f1c0-0a73-4384-8187-7d4e75baef6c" >
 		<http:listener-connection host="0.0.0.0" port="8082" />
 	</http:listener-config>
-	<flow name="demoFlow" doc:id="43311eeb-6133-4b33-a552-a91ff195044b" >
-		<http:listener doc:name="Listener" doc:id="20e165f1-de8c-4432-928a-2e8b975f4717" config-ref="HTTP_Listener_config" path="/demo"/>
-		<ee:transform doc:name="Transform Message" doc:id="7171181a-e561-49be-a687-57a7c21fe6fd" >
+	<flow name="demoFlow" doc:id="2f70510a-c294-4b86-97f5-4d2ce20fb8a5" >
+		<http:listener doc:name="Listener" doc:id="9de2ab65-e5f0-4458-afe4-9638ed98c326" config-ref="HTTP_Listener_config" path="/demo"/>
+		<ee:transform doc:name="Transform Message" doc:id="e477604d-56d3-4899-91f7-b31d27440bed" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
 ---
 {
-	message : "Welcome to Demo Project",
-	code : 200
-}]]></ee:set-payload>
+	"message": "Welcome to Demo Project",
+	"code": 200
+}	
+]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 	</flow>
